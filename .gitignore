@@ -1,0 +1,7 @@
+/backend/config/params.php
+/backend/runtime
+/backend/web/assets
+
+/mobile/config/params.php
+/mobile/runtime
+/mobile/web/assets

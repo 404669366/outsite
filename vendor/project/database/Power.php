@@ -133,7 +133,7 @@ class Power extends \yii\db\ActiveRecord
                 foreach ($sons as $son) {
                     $menu .= "<li><a class='J_menuItem' href='{$son['url']}'>{$son['name']}</a></li>";
                 }
-                $menu .= '</ul>';
+                $menu .= '</ul></li>';
             }
             return $menu;
         }
@@ -161,8 +161,10 @@ class Power extends \yii\db\ActiveRecord
             foreach ($sons as $son) {
                 $menu .= "<li><a class='J_menuItem' href='{$son['url']}'>{$son['name']}</a></li>";
             }
-            $menu .= '</ul>';
+            $menu .= '</ul></li>';
         }
+        $menu .= "<li><a href='#'><span class='nav-label'>权限管理</span><span class='fa arrow'></span></a>";
+        $menu .= '<ul class="nav nav-second-level"><li><a class="J_menuItem" href="/job/power/list">权限列表</a></li></ul></li>';
         return $menu;
     }
 

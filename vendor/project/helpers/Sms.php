@@ -20,7 +20,7 @@ class Sms
      * @param string $templateCode
      * @return int
      */
-    public static function sendCode($tel, $templateCode = 'SMS_150490675')
+    public static function sendCode($tel, $templateCode = 'SMS_158220084')
     {
         $code = mt_rand(1000, 9999);
         Dysms::sendSms($tel, ['code' => $code], $templateCode);

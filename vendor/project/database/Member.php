@@ -14,7 +14,6 @@ use yii\web\IdentityInterface;
  * @property string $tel 手机号
  * @property string $password 密码
  * @property string $job_id 职位id
- * @property string $money 余额
  * @property int $status 状态 1启用 2禁用 3删除
  * @property string $created_at
  */
@@ -43,7 +42,7 @@ class Member extends \yii\db\ActiveRecord implements IdentityInterface
             ],
             [['username', 'tel', 'job_id'], 'required'],
             [['job_id', 'status', 'created_at'], 'integer'],
-            [['username', 'money'], 'string', 'max' => 30],
+            [['username'], 'string', 'max' => 30],
             [['tel'], 'string', 'max' => 11],
             [['password'], 'string', 'max' => 80],
         ];
@@ -60,7 +59,6 @@ class Member extends \yii\db\ActiveRecord implements IdentityInterface
             'tel' => '手机号',
             'password' => '密码',
             'job_id' => '职位',
-            'money' => '余额',
             'status' => '状态 1启用 2禁用 3删除',
             'created_at' => 'Created At',
         ];

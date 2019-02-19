@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-02-19 17:53:41
+Date: 2019-02-19 18:00:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -73,7 +73,6 @@ CREATE TABLE `member` (
   `username` varchar(30) DEFAULT '' COMMENT '用户名',
   `tel` varchar(11) DEFAULT '' COMMENT '手机号',
   `password` varchar(80) DEFAULT '' COMMENT '密码',
-  `money` varchar(30) DEFAULT '' COMMENT '余额',
   `job_id` int(10) unsigned DEFAULT '0' COMMENT '职位id',
   `status` tinyint(1) unsigned DEFAULT '1' COMMENT '状态 1启用 2禁用',
   `created_at` int(11) unsigned DEFAULT '0',
@@ -83,7 +82,7 @@ CREATE TABLE `member` (
 -- ----------------------------
 -- Records of member
 -- ----------------------------
-INSERT INTO `member` VALUES ('1', 'root', '18683509267', '$2y$13$qEyIWPMnYyoxSXzgYy8mseoL/bS/HDPB8iYSGcBiIWJSfCMPyhZku', '', '0', '1', '1539588593');
+INSERT INTO `member` VALUES ('1', 'root', '18683509267', '$2y$13$qEyIWPMnYyoxSXzgYy8mseoL/bS/HDPB8iYSGcBiIWJSfCMPyhZku', '0', '1', '1539588593');
 
 -- ----------------------------
 -- Table structure for power

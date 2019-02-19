@@ -35,4 +35,30 @@ class Constant
             2 => '禁用',
         ];
     }
+
+    /**
+     * 活动券类型
+     * @return array
+     */
+    public static function volumeType()
+    {
+        return [
+            0 => '活动报名凭证',
+            1 => '活动优惠券',
+        ];
+    }
+
+    /**
+     * 活动劵使用状态
+     * @return array
+     */
+    public static function volumeStatus()
+    {
+        return [
+            0 => '未使用',
+            1 => '已使用',
+            2 => '已禁用',
+        ];
+    }
+
 }

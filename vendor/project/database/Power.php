@@ -2,6 +2,7 @@
 
 namespace vendor\project\database;
 
+use helper\redis;
 use vendor\project\helpers\Constant;
 use Yii;
 
@@ -190,8 +191,12 @@ class Power extends \yii\db\ActiveRecord
      */
     public static function pass()
     {
-        if (!in_array(Yii::$app->user->identity->username, \Yii::$app->params['rootName'])) {
-            if ($rule = self::findOne(['url' => '/' . Yii::$app->controller->getRoute()])) {
+        if (Yii::$app->user->identity->job_id) {
+            $nowRule = Yii::$app->controller->getRoute();
+            if ($nowRule == 'job/power/list') {
+                return false;
+            }
+            if ($rule = self::findOne(['url' => '/' . $nowRule])) {
                 return Job::find()->where(['id' => Yii::$app->user->identity->job_id])
                     ->andWhere('find_in_set(' . $rule->id . ',powers)')
                     ->one();

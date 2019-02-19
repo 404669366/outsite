@@ -21,10 +21,10 @@ class CommonController extends BasisController
     public function beforeAction($action)
     {
         if (\Yii::$app->user->isGuest) {
-            return $this->redirect([\Yii::$app->params['loginRoute']],'请先登录')->send();
+            return $this->redirect(['member/login/login'],'请先登录')->send();
         }
         if (!Power::pass()) {
-            return $this->redirect([\Yii::$app->params['indexRoute']],'您没有该操作权限')->send();
+            return $this->redirect(['index/index/index'],'您没有该操作权限')->send();
         }
         return parent::beforeAction($action);
     }

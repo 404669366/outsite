@@ -23,10 +23,12 @@ class IndexController extends CommonController
         $this->layout = false;
         $user = \Yii::$app->user->getIdentity() ? \Yii::$app->user->getIdentity() : '';
         $data['username'] = $user ? $user->username : '';
-        if (in_array($data['username'], \Yii::$app->params['rootName'])) {
-            $data['menus'] = Power::getRootMenu();
-        } elseif ($data['username']) {
-            $data['menus'] = redis::app()->hGet(\Yii::$app->params['entryName'] . 'BackendMenu', $user->job_id);
+        if ($data['username']) {
+            if ($user->job_id) {
+                $data['menus'] = redis::app()->hGet(\Yii::$app->params['entryName'] . 'BackendMenu', $user->job_id);
+            } else {
+                $data['menus'] = Power::getRootMenu();
+            }
         } else {
             $data['menus'] = '';
         }

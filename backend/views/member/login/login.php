@@ -27,10 +27,10 @@ $this->beginPage();
         <div class="col-sm-7">
             <div class="signin-info">
                 <div class="logopanel m-b">
-                    <h1>[ EN ]</h1>
+                    <h1>[ 博瑞恩贝 ]</h1>
                 </div>
                 <div class="m-b"></div>
-                <h4>欢迎使用亿能科技后台</h4>
+                <h4>欢迎使用博瑞恩贝后台</h4>
             </div>
         </div>
         <div class="col-sm-5">
@@ -49,7 +49,7 @@ $this->beginPage();
     </div>
     <div class="signup-footer">
         <div class="pull-left">
-            &copy; 2018 - 2099
+            &copy; 2019 - 2099
         </div>
     </div>
 </div>

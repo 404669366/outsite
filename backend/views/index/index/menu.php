@@ -41,7 +41,7 @@ $this->beginPage();
                         <ul class="dropdown-menu animated fadeInRight m-t-xs updatePasswordBox">
                             <li><a class="J_menuItem updatePassword" href="/member/member/update">修改密码</a></li>
                             <li class="divider"></li>
-                            <li><a href="/<?=Yii::$app->params['logoutRoute']?>">安全退出</a></li>
+                            <li><a href="/member/login/logout">安全退出</a></li>
                         </ul>
                         <script>
                             $('.updatePassword').click(function () {
@@ -78,7 +78,7 @@ $this->beginPage();
             <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i></button>
             <nav class="page-tabs J_menuTabs">
                 <div class="page-tabs-content">
-                    <a href="javascript:;" class="active J_menuTab" data-id="/<?=Yii::$app->params['indexRoute']?>">首页</a>
+                    <a href="javascript:;" class="active J_menuTab" data-id="/index/index/index">首页</a>
                 </div>
             </nav>
             <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i></button>
@@ -93,11 +93,11 @@ $this->beginPage();
                     <li class="J_tabCloseOther"><a>关闭其他选项卡</a></li>
                 </ul>
             </div>
-            <a href="/<?=Yii::$app->params['logoutRoute']?>" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+            <a href="/member/login/logout" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
         </div>
         <div class="row J_mainContent" id="content-main">
-            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="/<?=Yii::$app->params['indexRoute']?>" frameborder="0"
-                    data-id="/<?=Yii::$app->params['indexRoute']?>" seamless></iframe>
+            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="/index/index/index" frameborder="0"
+                    data-id="/index/index/index" seamless></iframe>
         </div>
         <script>
             $('.page-tabs-content').on('dblclick', '.J_menuTab', function () {

@@ -61,4 +61,28 @@ class Constant
         ];
     }
 
+    /**
+     * 账号使用状态
+     * @return array
+     */
+    public static function userStatus()
+    {
+        return [
+            0 => '在使用',
+            1 => '已禁用',
+        ];
+    }
+
+    /**
+     * 性别状态
+     * @return array
+     */
+    public static function sex()
+    {
+        return [
+            0 => '男',
+            1 => '女',
+        ];
+    }
+
 }

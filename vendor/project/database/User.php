@@ -2,7 +2,7 @@
 
 namespace vendor\project\database;
 
-use Yii;
+use vendor\project\helpers\Constant;
 use yii\web\IdentityInterface;
 
 /**
@@ -35,7 +35,14 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            [['name', 'tel', 'child_name', 'child_age', 'class'], 'required'],
             [['tel'], 'unique', 'message' => '手机号已注册'],
+            [
+                'tel',
+                'match',
+                'pattern' => '/^13[0-9]{9}$|14[0-9]{9}$|15[0-9]{9}$|17[0-9]{9}$|18[0-9]{9}$/',
+                'message' => '手机号格式不正确'
+            ],
             [['tel', 'created', 'child_sex', 'child_age', 'status'], 'integer'],
             [['wechat'], 'unique'],
             [['wechat'], 'string', 'max' => 80],
@@ -60,6 +67,27 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'class' => '班级',
             'status' => '账号状态',
         ];
+    }
+
+    /**
+     * 获取分页数据
+     * @return mixed
+     */
+    public static function getPageData()
+    {
+        $data = self::find()
+            ->page([
+                'name' => ['like', 'name'],
+                'child_name' => ['like', 'child_name'],
+                'class' => ['like', 'class'],
+                'tel' => ['like', 'tel'],
+                'status' => ['=', 'status'],
+            ]);
+        foreach ($data['data'] as &$v) {
+            $v['status'] = Constant::userStatus()[$v['status']];
+            $v['child_sex'] = Constant::sex()[$v['child_sex']];
+        }
+        return $data;
     }
 
     //todo**********************  登录接口实现  ***************************

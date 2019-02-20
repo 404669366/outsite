@@ -46,4 +46,22 @@ class VRelation extends \yii\db\ActiveRecord
             'updated_at' => '更新时间',
         ];
     }
+
+    /**
+     * 用户禁用后禁用卡券
+     * @param $user_id
+     */
+    public static function forbiddenVolume($user_id)
+    {
+        $data = self::find()->alias('vr')
+            ->leftJoin(Volume::tableName() . ' v', 'vr.volume_id=v.id')
+            ->where(['vr.user_id' => $user_id])
+            ->andWhere(['vr.status' => 0])
+            ->andWhere(['>', 'end_at', time()])
+            ->all();
+        foreach ($data as $v) {
+            $v->status = 2;
+            $v->save();
+        }
+    }
 }

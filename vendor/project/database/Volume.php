@@ -2,6 +2,7 @@
 
 namespace vendor\project\database;
 
+use vendor\project\helpers\Constant;
 use Yii;
 
 /**
@@ -32,7 +33,9 @@ class Volume extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['no', 'type', 'remark', 'begin_at', 'end_at'], 'required'],
             [['type', 'created_at', 'begin_at', 'end_at'], 'integer'],
+            [['no'], 'unique'],
             [['no'], 'string', 'max' => 18],
             [['money'], 'string', 'max' => 10],
             [['remark'], 'string', 'max' => 255],
@@ -54,5 +57,35 @@ class Volume extends \yii\db\ActiveRecord
             'end_at' => '截止时间',
             'remark' => '备注',
         ];
+    }
+
+    /**
+     * 获取分页数据
+     * @return mixed
+     */
+    public static function getPageData()
+    {
+        $data = self::find()
+            ->page([
+                'type' => ['=', 'type'],
+                'no' => ['=', 'no'],
+            ]);
+        foreach ($data['data'] as &$v) {
+            $v['type'] = Constant::volumeType()[$v['type']];
+        }
+        return $data;
+    }
+
+    /**
+     * 查看活动券是否发放
+     * @param $id
+     * @return bool
+     */
+    public static function exist($id)
+    {
+        if (VRelation::findOne(['volume_id' => $id])) {
+            return false;
+        }
+        return true;
     }
 }

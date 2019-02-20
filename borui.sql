@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-02-20 15:56:34
+Date: 2019-02-20 17:58:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -99,7 +99,7 @@ CREATE TABLE `power` (
   `url` varchar(100) DEFAULT '' COMMENT '权限路由',
   `sort` int(10) unsigned DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='用户权限表';
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='用户权限表';
 
 -- ----------------------------
 -- Records of power
@@ -111,6 +111,8 @@ INSERT INTO `power` VALUES ('4', '0', '6zmmoeds', '1', '活动管理', '/active'
 INSERT INTO `power` VALUES ('5', '4', 'nkbd4vcg', '1', '活动列表', '/active/active/list', '0');
 INSERT INTO `power` VALUES ('6', '0', 'smwuogyb', '1', '会员管理', '/user', '2');
 INSERT INTO `power` VALUES ('7', '6', 'xux9fu61', '1', '会员列表', '/user/user/list', '0');
+INSERT INTO `power` VALUES ('8', '0', '1u5ippng', '1', '票券管理', '/volume', '3');
+INSERT INTO `power` VALUES ('9', '8', 'iot8u2u9', '1', '票券列表', '/volume/volume/list', '0');
 
 -- ----------------------------
 -- Table structure for user

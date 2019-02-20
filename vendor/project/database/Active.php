@@ -54,6 +54,20 @@ class Active extends \yii\db\ActiveRecord
     }
 
     /**
+     * 获取参与活动路由
+     * @param string $no
+     * @param string $rule
+     * @return string
+     */
+    public static function getJoinUrl($no = '', $rule = '/api/active/join.html?no=')
+    {
+        $domain = Yii::$app->request->hostInfo;
+        $domain = str_replace('admin', 'm', $domain);
+        $url = $domain . $rule . $no;
+        return $url;
+    }
+
+    /**
      * 返回分页数据
      * @return mixed
      */
@@ -79,5 +93,18 @@ class Active extends \yii\db\ActiveRecord
             return false;
         }
         return true;
+    }
+
+    /**
+     * 返回参加活动用户
+     * @param $id
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function getJoinUsers($id)
+    {
+        return ARelation::find()->alias('ar')
+            ->leftJoin(User::tableName() . ' u', 'ar.user_id=u.id')
+            ->where(['ar.active_id' => $id])
+            ->asArray()->all();
     }
 }

@@ -83,4 +83,13 @@ class BasisController extends Controller
     {
         return $this->render('error');
     }
+
+    /**
+     * 自定义消息提示页并返回上一页
+     * @return string
+     */
+    public function actionMsgBack()
+    {
+        return $this->render('msg');
+    }
 }

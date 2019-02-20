@@ -53,8 +53,10 @@ class Wechat
      * @param string $redirect
      * @return string
      */
-    public static function getUserAuthorizeCodeUrl($redirect = 'http://m.en.ink/login/login/login-w.html')
+    public static function getUserAuthorizeCodeUrl($redirect = '/login/login/login-w.html')
     {
+        $domain = \Yii::$app->request->hostInfo;
+        $redirect = $domain . $redirect;
         $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?';
         $url .= 'appid=' . self::APP_ID;
         $url .= '&redirect_uri=' . urlencode($redirect);

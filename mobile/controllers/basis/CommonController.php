@@ -21,7 +21,7 @@ class CommonController extends BasisController
             if (Wechat::isWechat()) {
                 return $this->redirect(Wechat::getUserAuthorizeCodeUrl())->send();
             }
-            return $this->redirect(['/login/login/login-t'], '请先登录')->send();
+            return $this->redirect(['login/login/login'], '请先登录')->send();
         }
         return parent::beforeAction($action);
     }

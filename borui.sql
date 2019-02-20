@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-02-19 18:00:28
+Date: 2019-02-20 15:50:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,11 +42,13 @@ CREATE TABLE `active` (
   `end_at` int(11) unsigned DEFAULT '0' COMMENT '活动结束时间',
   `limit` int(5) unsigned DEFAULT '0' COMMENT '人数限制',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='活动表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='活动表';
 
 -- ----------------------------
 -- Records of active
 -- ----------------------------
+INSERT INTO `active` VALUES ('1', 'A2019022011228113', '123123', '1550678400', '1551110400', '123123');
+INSERT INTO `active` VALUES ('2', 'A2019022013154802', '123123', '1550592000', '1551196800', '22');
 
 -- ----------------------------
 -- Table structure for job
@@ -97,7 +99,7 @@ CREATE TABLE `power` (
   `url` varchar(100) DEFAULT '' COMMENT '权限路由',
   `sort` int(10) unsigned DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户权限表';
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='用户权限表';
 
 -- ----------------------------
 -- Records of power
@@ -105,6 +107,8 @@ CREATE TABLE `power` (
 INSERT INTO `power` VALUES ('1', '0', '353varQx', '1', '组织架构', '/job', '0');
 INSERT INTO `power` VALUES ('2', '1', 'a89l9knd', '1', '职位管理', '/job/job/list', '0');
 INSERT INTO `power` VALUES ('3', '1', 'x8oblwsw', '1', '用户管理', '/member/member/list', '1');
+INSERT INTO `power` VALUES ('4', '0', '6zmmoeds', '1', '活动管理', '/active', '1');
+INSERT INTO `power` VALUES ('5', '4', 'nkbd4vcg', '1', '活动列表', '/active/active/list', '0');
 
 -- ----------------------------
 -- Table structure for user

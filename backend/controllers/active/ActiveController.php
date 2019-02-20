@@ -45,16 +45,24 @@ class ActiveController extends CommonController
             $data['end_at'] = $data['end_at'] ? strtotime($data['end_at']) : '';
             $model = new Active();
             if ($model->load(['Active' => $data]) && $model->validate() && $model->save()) {
-                return $this->redirect(['list'], '创建成功');
+                return $this->redirect(['detail?id=' . $model->id], '创建成功');
             }
             Msg::set($model->errors());
         }
         return $this->render('add');
     }
 
+    /**
+     * 活动详情页
+     * @param $id
+     * @return string
+     */
     public function actionDetail($id)
     {
-
+        return $this->render('detail', [
+            'model' => Active::findOne($id),
+            'users' => Active::getJoinUsers($id)
+        ]);
     }
 
     /**

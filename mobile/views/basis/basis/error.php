@@ -15,7 +15,7 @@
     <div class="notMain" id="notMain">10秒后页面将跳转到上一页...</div>
     <div class="notBtn">
         <a href="javascript:history.back(-1)">立即跳转</a>&emsp;&emsp;
-        <a href="/index/index/index.html">返回首页</a>
+        <a href="/user/user/center.html">返回个人中心</a>
     </div>
 </div>
 </body>

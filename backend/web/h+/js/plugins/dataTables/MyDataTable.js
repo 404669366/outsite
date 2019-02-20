@@ -136,3 +136,15 @@ myTable.baseLoad = function (config) {
     });
     return true;
 };
+
+
+function format(timestamp) {
+    var time = new Date(timestamp);
+    var year = time.getFullYear();
+    var month = time.getMonth() + 1;
+    var date = time.getDate();
+    var hours = time.getHours();
+    var minutes = time.getMinutes();
+    var seconds = time.getSeconds();
+    return year + '-' + add0(month) + '-' + add0(date) + ' ' + add0(hours) + ':' + add0(minutes) + ':' + add0(seconds);
+}

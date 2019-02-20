@@ -30,7 +30,9 @@ class Active extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['begin_at', 'end_at', 'limit', 'no', 'remark'], 'required'],
             [['begin_at', 'end_at', 'limit'], 'integer'],
+            [['no'], 'unique'],
             [['no'], 'string', 'max' => 18],
             [['remark'], 'string', 'max' => 255],
         ];
@@ -49,5 +51,33 @@ class Active extends \yii\db\ActiveRecord
             'end_at' => '活动结束时间',
             'limit' => '人数限制',
         ];
+    }
+
+    /**
+     * 返回分页数据
+     * @return mixed
+     */
+    public static function getPageData()
+    {
+        $data = self::find()->page([
+            'no' => ['like', 'no']
+        ]);
+        foreach ($data['data'] as &$v) {
+            $v['can'] = self::canDel($v['id']);
+        }
+        return $data;
+    }
+
+    /**
+     * 验证当前活动能否删除
+     * @param $id
+     * @return bool
+     */
+    public static function canDel($id)
+    {
+        if (ARelation::findOne(['active_id' => $id])) {
+            return false;
+        }
+        return true;
     }
 }

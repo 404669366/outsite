@@ -1049,6 +1049,7 @@ class Model extends Component implements StaticInstanceInterface, IteratorAggreg
         $errors = $this->getErrors() ? $this->getErrors() : '';
         if ($errors) {
             $str = '';
+            $errors = array_reverse($errors);
             foreach ($errors as $k => $v) {
                 $k = isset($attr[$k]) ? $attr[$k] : $k;
                 $str .= $k . ' : ';

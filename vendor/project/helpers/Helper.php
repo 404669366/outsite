@@ -14,11 +14,11 @@ class Helper
     /**
      * 生成编号
      * @param string $prefix
-     * @return string 不加前缀14位
+     * @return string 不加前缀16位
      */
     public static function createNo($prefix = '')
     {
-        $prefix .= date('YmdH') . mt_rand(1000, 9999);
+        $prefix .= date('YmdHi') . mt_rand(1000, 9999);
         return $prefix;
     }
 

@@ -139,12 +139,17 @@ myTable.baseLoad = function (config) {
 
 
 function format(timestamp) {
-    var time = new Date(timestamp);
-    var year = time.getFullYear();
-    var month = time.getMonth() + 1;
-    var date = time.getDate();
-    var hours = time.getHours();
-    var minutes = time.getMinutes();
-    var seconds = time.getSeconds();
-    return year + '-' + add0(month) + '-' + add0(date) + ' ' + add0(hours) + ':' + add0(minutes) + ':' + add0(seconds);
+    var date = new Date(timestamp * 1000);
+    var Y = date.getFullYear();
+    var M = date.getMonth() + 1;
+    var D = date.getDate();
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+
+    function add(num, length) {
+        return (Array(length).join(0) + num).slice(-length);
+    }
+
+    return Y + '-' + add(M, 2) + '-' + D + ' ' + add(h, 2) + ':' + add(m, 2) + ':' + add(s, 2);
 }

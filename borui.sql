@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : 本地
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : borui
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-02-20 17:58:23
+Date: 2019-02-21 14:45:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -120,6 +120,7 @@ INSERT INTO `power` VALUES ('9', '8', 'iot8u2u9', '1', '票券列表', '/volume/
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `auth` varchar(80) DEFAULT '' COMMENT '用户标识',
   `tel` varchar(11) DEFAULT '' COMMENT '用户电话',
   `wechat` varchar(80) DEFAULT '' COMMENT '微信ID',
   `name` varchar(20) DEFAULT '' COMMENT '家长姓名',
@@ -130,11 +131,12 @@ CREATE TABLE `user` (
   `status` tinyint(1) unsigned DEFAULT '0' COMMENT '账号状态0在使用1已禁用',
   `created` int(11) unsigned DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='普通用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='普通用户表';
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
+INSERT INTO `user` VALUES ('1', '', '18683509267', '', '123123', 'aaaa', '0', '10', 'dwadad', '0', '1550730854');
 
 -- ----------------------------
 -- Table structure for v_relation

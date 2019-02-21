@@ -18,10 +18,12 @@ class LoginController extends BasisController
      */
     public function actionLogin()
     {
+        $tel = '';
         if (\Yii::$app->request->isPost) {
             $data = \Yii::$app->request->post();
             Msg::set('手机号不能为空');
             if ($data['loginTel']) {
+                $tel = $data['loginTel'];
                 Msg::set('验证码有误');
                 if (Sms::validateCode($data['loginTel'], $data['loginTelCode'])) {
                     Msg::set('账号不存在');
@@ -34,7 +36,7 @@ class LoginController extends BasisController
                 }
             }
         }
-        return $this->render('login');
+        return $this->render('login', ['tel' => $tel]);
     }
 
     /**

@@ -14,7 +14,7 @@
         <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
         <div class="tit">博瑞恩贝</div>
         <div class="text">
-            <input class="tel" name="loginTel" type="text" placeholder="账号">
+            <input class="tel" name="loginTel" type="text" placeholder="账号" value="<?= $tel ?>">
         </div>
         <div class="text">
             <input class="code" name="loginTelCode" type="text" placeholder="验证码">

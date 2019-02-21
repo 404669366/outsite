@@ -90,7 +90,30 @@ class VolumeController extends CommonController
         if (Volume::exist($id)) {
             $model = Volume::findOne($id);
             $model->delete();
+            Msg::set('删除成功');
         }
-        return $this->redirect('list', '删除成功');
+        return $this->redirect(['list']);
+
+    }
+
+    /**
+     * 发放活动券
+     * @param $id
+     * @return string|\yii\web\Response
+     */
+    public function actionGrant($id)
+    {
+        if (Volume::timeout($id)) {
+            $model = Volume::findOne($id);
+            if (\Yii::$app->request->isPost) {
+                $re = Volume::grant(\Yii::$app->request->post('users', ''), \Yii::$app->request->post('num', 1), $id);
+                Msg::set('共检测到' . $re['allNum'] . '个用户,成功发放' . $re['insertNum'] . '个用户');
+                if ($re['result']) {
+                    return $this->render('result', ['re' => $re]);
+                }
+            }
+            return $this->render('grant', ['model' => $model]);
+        }
+        return $this->redirect(['list'], '活动券已过期');
     }
 }

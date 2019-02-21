@@ -67,7 +67,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">备注</label>
             <div class="col-sm-2">
-                <textarea name="remark"></textarea>
+                <textarea class="form-control" name="remark"></textarea>
             </div>
         </div>
 

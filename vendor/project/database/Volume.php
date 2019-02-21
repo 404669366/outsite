@@ -72,6 +72,8 @@ class Volume extends \yii\db\ActiveRecord
             ]);
         foreach ($data['data'] as &$v) {
             $v['type'] = Constant::volumeType()[$v['type']];
+            $v['exist'] = self::exist($v['id']);
+            $v['timeout'] = self::timeout($v['id']);
         }
         return $data;
     }
@@ -87,5 +89,46 @@ class Volume extends \yii\db\ActiveRecord
             return false;
         }
         return true;
+    }
+
+    /**
+     * 查看活动券是否过期
+     * @param $id
+     * @return bool
+     */
+    public static function timeout($id)
+    {
+        if (time() > Volume::findOne($id)->end_at) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 发放活动券
+     * @param string $users
+     * @param int $num
+     * @param int $volume
+     * @return array
+     */
+    public static function grant($users = '', $num = 1, $volume = 0)
+    {
+        $all = explode("\r", $users);
+        $insert = [];
+        $result = '';
+        foreach ($all as $tel) {
+            $i = $num;
+            $tel = trim($tel);
+            if ($user = User::findOne(['tel' => $tel])) {
+                while ($i > 0) {
+                    $i--;
+                    array_push($insert, ['user_id' => $user->id, 'volume_id' => $volume]);
+                }
+            } else {
+                $result .= $tel . "\r";
+            }
+        }
+        Yii::$app->db->createCommand()->batchInsert(VRelation::tableName(), ['user_id', 'volume_id'], $insert)->execute();
+        return ['insertNum' => count(array_unique($insert, SORT_REGULAR)), 'allNum' => count($all), 'result' => $result];
     }
 }

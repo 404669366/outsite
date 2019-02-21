@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-02-21 14:45:39
+Date: 2019-02-21 14:47:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -131,12 +131,11 @@ CREATE TABLE `user` (
   `status` tinyint(1) unsigned DEFAULT '0' COMMENT '账号状态0在使用1已禁用',
   `created` int(11) unsigned DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='普通用户表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='普通用户表';
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '', '18683509267', '', '123123', 'aaaa', '0', '10', 'dwadad', '0', '1550730854');
 
 -- ----------------------------
 -- Table structure for v_relation

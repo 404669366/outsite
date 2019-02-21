@@ -14,7 +14,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">活动券类型</label>
             <div class="col-sm-2">
-                <select name="type">
+                <select class="form-control" name="type">
                     <?php foreach (\vendor\project\helpers\Constant::volumeType() as $k => $v): ?>
                         <option value="<?= $k ?>"<?= $model->type == $k ? "selected" : '' ?>><?= $v ?></option>
                     <?php endforeach; ?>

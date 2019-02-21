@@ -52,6 +52,7 @@ body {
     padding-left: 0.16rem;
     border: none;
     float: left;
+    color: #ababab;
     margin-bottom: 0.4rem;
 }
 
@@ -73,7 +74,7 @@ body {
     line-height: 0.8rem;
     font-size: 0.42rem;
     text-align: center;
-    background: #b2e73d;
+    background: #66b961;
     float: right;
     color: #f0f4f7;
 }

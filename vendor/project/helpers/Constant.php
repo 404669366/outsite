@@ -68,7 +68,7 @@ class Constant
     public static function userStatus()
     {
         return [
-            0 => '在使用',
+            0 => '已启用',
             1 => '已禁用',
         ];
     }

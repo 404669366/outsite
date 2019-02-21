@@ -62,8 +62,14 @@
             {"data": "remark"},
             {
                 "data": "id", "orderable": false, "render": function (data, type, row) {
-                var str = '<a class="btn btn-sm btn-warning" href="/volume/volume/edit?id=' + data + '">修改</a>';
-                str += '&emsp;<a class="btn btn-sm btn-danger" href="/volume/volume/del?id=' + data + '">删除</a>';
+                var str = '';
+                if (row.exist) {
+                    str += '<a class="btn btn-sm btn-warning" href="/volume/volume/edit?id=' + data + '">修改</a>';
+                    str += '&emsp;<a class="btn btn-sm btn-danger" href="/volume/volume/del?id=' + data + '">删除</a>';
+                }
+                if (row.timeout) {
+                    str += '&emsp;<a class="btn btn-sm btn-primary" href="/volume/volume/grant?id=' + data + '">发放</a>';
+                }
                 return str;
             }
             }

@@ -6,7 +6,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">编号</label>
             <div class="col-sm-2">
-                <input type="text" class="form-control" 
+                <input type="text" class="form-control"
                        placeholder="<?= $model->no ?>" readonly>
             </div>
         </div>
@@ -69,7 +69,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">备注</label>
             <div class="col-sm-2">
-                <textarea name="remark"><?= $model->remark ?></textarea>
+                <textarea class="form-control" name="remark"><?= $model->remark ?></textarea>
             </div>
         </div>
 

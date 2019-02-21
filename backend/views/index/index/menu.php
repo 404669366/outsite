@@ -12,7 +12,6 @@ $this->beginPage();
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html"/>
     <![endif]-->
-    <link rel="shortcut icon" href="/favicon.ico">
     <?php $this->head() ?>
 </head>
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">

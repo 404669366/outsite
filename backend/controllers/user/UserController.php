@@ -41,8 +41,8 @@ class UserController extends CommonController
      */
     public function actionAdd()
     {
-        $model = new User();
         if (\Yii::$app->request->isPost) {
+            $model = new User();
             $data = \Yii::$app->request->post();
             $data['created'] = time();
             if ($model->load(['User' => $data]) && $model->validate() && $model->save()) {

@@ -12,11 +12,11 @@
 <span class="boxCenter">
     <div class="loginBox">
         <div class="text">
-            <input class="tel" type="text">
+            <input class="tel" type="text" placeholder="账号">
         </div>
         <div class="text">
-            <input class="code" type="text">
-            <div class="click"></div>
+            <input class="code" type="text" placeholder="验证码">
+            <div class="click">发送</div>
         </div>
     </div>
 </span>

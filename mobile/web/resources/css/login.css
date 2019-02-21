@@ -19,6 +19,7 @@ body {
     color: silver;
     text-align: center;
     position: absolute;
+    margin-top: 4.4rem;
 }
 
 .boxCenter {
@@ -64,4 +65,5 @@ body {
     text-align: center;
     background: orange;
     float: right;
+    color: #f0f4f7;
 }

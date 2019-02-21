@@ -8,7 +8,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">未识别用户</label>
             <div class="col-sm-2">
-                <textarea class="form-control"><?= $re['result'] ?></textarea>
+                <textarea class="form-control" rows="12"><?= $re['result'] ?></textarea>
             </div>
         </div>
         <div class="hr-line-dashed"></div>

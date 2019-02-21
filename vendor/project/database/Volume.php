@@ -113,12 +113,11 @@ class Volume extends \yii\db\ActiveRecord
      */
     public static function grant($users = '', $num = 1, $volume = 0)
     {
-        $all = explode("\r", $users);
+        $all = array_filter(explode("\r\n", str_replace(' ', '', $users)));
         $insert = [];
         $result = '';
         foreach ($all as $tel) {
             $i = $num;
-            $tel = trim($tel);
             if ($user = User::findOne(['tel' => $tel])) {
                 while ($i > 0) {
                     $i--;

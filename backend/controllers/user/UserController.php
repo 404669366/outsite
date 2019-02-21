@@ -45,6 +45,7 @@ class UserController extends CommonController
             $model = new User();
             $data = \Yii::$app->request->post();
             $data['created'] = time();
+            $data['auth'] = \Yii::$app->security->generatePasswordHash($data['tel']);
             if ($model->load(['User' => $data]) && $model->validate() && $model->save()) {
                 return $this->redirect('list', '添加用户成功');
             }

@@ -9,6 +9,7 @@ use yii\web\IdentityInterface;
  * This is the model class for table "{{%user}}".
  *
  * @property int $id
+ * @property int $auth 用户标识
  * @property string $tel 用户电话
  * @property string $wechat 微信ID
  * @property string $name 家长姓名
@@ -44,7 +45,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
                 'message' => '手机号格式不正确'
             ],
             [['tel', 'created', 'child_sex', 'child_age', 'status'], 'integer'],
-            [['wechat'], 'unique'],
+            [['wechat', 'auth'], 'unique'],
             [['wechat'], 'string', 'max' => 80],
             [['name', 'child_name', 'class'], 'string', 'max' => 20],
         ];
@@ -57,6 +58,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
+            'auth' => '用户标识',
             'tel' => '用户电话',
             'wechat' => '微信ID',
             'created' => '创建时间',
@@ -99,7 +101,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        return self::findOne(['password' => $token]);
+        return self::findOne(['auth' => $token]);
     }
 
     public function getId()
@@ -109,12 +111,12 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
     public function getAuthKey()
     {
-        return $this->password;
+        return $this->auth;
     }
 
     public function validateAuthKey($authKey)
     {
-        return $this->password === $authKey;
+        return $this->auth === $authKey;
     }
 
 }

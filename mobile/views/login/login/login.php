@@ -10,17 +10,18 @@
 </head>
 <body>
 <span class="boxCenter">
-    <div class="loginBox">
+    <form method="post" class="loginBox">
+        <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
         <div class="tit">博瑞恩贝</div>
         <div class="text">
-            <input class="tel" type="text" placeholder="账号">
+            <input class="tel" name="tel" type="text" placeholder="账号">
         </div>
         <div class="text">
-            <input class="code" type="text" placeholder="验证码">
+            <input class="code" name="code" type="text" placeholder="验证码">
             <div class="click">发送</div>
         </div>
-        <button class="text button">登 录</button>
-    </div>
+        <button class="text button" type="submit">登 录</button>
+    </form>
 </span>
 <script>
     sms({

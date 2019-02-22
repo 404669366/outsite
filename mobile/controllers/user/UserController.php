@@ -21,4 +21,13 @@ class UserController extends CommonController
     {
         return $this->render('center');
     }
+
+    /**
+     * 账户信息
+     * @return string
+     */
+    public function actionInfo()
+    {
+        return $this->render('info');
+    }
 }

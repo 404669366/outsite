@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地
+Source Server         : localhost_3306
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : borui
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-02-22 13:38:28
+Date: 2019-02-22 18:49:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -38,6 +38,7 @@ DROP TABLE IF EXISTS `active`;
 CREATE TABLE `active` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `no` varchar(18) DEFAULT '' COMMENT '活动编号',
+  `title` varchar(20) DEFAULT '' COMMENT '活动标题',
   `remark` varchar(255) DEFAULT '' COMMENT '活动描述',
   `begin_at` int(11) unsigned DEFAULT '0' COMMENT '活动开始时间',
   `end_at` int(11) unsigned DEFAULT '0' COMMENT '活动结束时间',

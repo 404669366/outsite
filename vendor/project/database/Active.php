@@ -10,6 +10,7 @@ use Yii;
  *
  * @property string $id
  * @property string $no 活动编号
+ * @property string $title 活动标题
  * @property string $remark 活动描述
  * @property string $begin_at 活动开始时间
  * @property string $end_at 活动结束时间
@@ -31,9 +32,10 @@ class Active extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['begin_at', 'end_at', 'limit', 'no', 'remark'], 'required'],
+            [['begin_at', 'end_at', 'limit', 'no', 'remark', 'title'], 'required'],
             [['begin_at', 'end_at', 'limit'], 'integer'],
             [['no'], 'unique'],
+            [['title'], 'string', 'max' => 20],
             [['no'], 'string', 'max' => 18],
             [['remark'], 'string', 'max' => 255],
         ];
@@ -47,6 +49,7 @@ class Active extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'no' => '活动编号',
+            'title' => '活动标题',
             'remark' => '活动描述',
             'begin_at' => '活动开始时间',
             'end_at' => '活动结束时间',
@@ -75,7 +78,8 @@ class Active extends \yii\db\ActiveRecord
     public static function getPageData()
     {
         $data = self::find()->page([
-            'no' => ['like', 'no']
+            'no' => ['like', 'no'],
+            'title' => ['like', 'title']
         ]);
         foreach ($data['data'] as &$v) {
             $v['can'] = self::canDel($v['id']);

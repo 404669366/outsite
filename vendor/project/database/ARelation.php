@@ -55,8 +55,9 @@ class ARelation extends \yii\db\ActiveRecord
     {
         return self::find()->alias('ar')
             ->leftJoin(Active::tableName() . ' a', 'ar.active_id=a.id')
-            ->select(['a.no', 'a.remark', 'a.begin_at', 'a.end_at', 'ar.created_at'])
+            ->select(['a.no', 'a.title', 'ar.created_at'])
             ->where(['user_id' => $user_id ?: Yii::$app->user->id])
+            ->orderBy('ar.created_at desc')
             ->asArray()->all();
     }
 }

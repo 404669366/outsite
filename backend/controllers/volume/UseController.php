@@ -55,12 +55,16 @@ class UseController extends CommonController
      */
     public function actionDel($id)
     {
-        Msg::set('扣除错误');
-        $model = VRelation::findOne($id);
-        $model->status = 1;
-        $model->updated_at = time();
-        if ($model->save()) {
-            Msg::set('扣除成功');
+        Msg::set('优惠券已过期');
+        if (Volume::timeout($id)) {
+            Msg::set('非法操作');
+            if ($model = VRelation::findOne(['id' => $id, 'status' => 0, 'type' => 1])) {
+                $model->status = 1;
+                $model->updated_at = time();
+                if ($model->save()) {
+                    Msg::set('扣除成功');
+                }
+            }
         }
         return $this->redirect(['use?id=' . $model->user_id]);
     }

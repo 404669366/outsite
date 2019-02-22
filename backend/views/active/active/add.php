@@ -12,6 +12,13 @@
         </div>
         <div class="hr-line-dashed"></div>
         <div class="form-group">
+            <label class="col-sm-2 control-label">活动标题</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" name="title" value="">
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
             <label class="col-sm-2 control-label">活动描述</label>
             <div class="col-sm-2">
                 <textarea class="form-control" name="remark"></textarea>

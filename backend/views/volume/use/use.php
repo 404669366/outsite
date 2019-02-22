@@ -47,7 +47,7 @@
                 <tbody class="dataBox">
                 <?php foreach ($volume as $v): ?>
                     <tr>
-                        <td><?= $v['money'] ? $v['money'] . '元' : '' . $v['type'] ?></td>
+                        <td><?= ($v['money'] ? $v['money'] . '元' : '') . $v['type'] ?></td>
                         <td><?= date('Y-m-d H:i:s', $v['begin_at']) . ' - ' . date('Y-m-d H:i:s', $v['end_at']) ?></td>
                         <td><?= $v['status'] ?></td>
                         <td class="client-status">

@@ -1,0 +1,59 @@
+.list {
+    width: 10rem;
+}
+
+.listOne {
+    width: 10rem;
+    height: 2rem;
+    display: table;
+    border-bottom: 2px solid #666;
+    position: relative;
+}
+
+.center {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.title {
+    width: 8rem;
+    height: 1rem;
+    margin: 0 auto;
+}
+
+.name {
+    float: left;
+    max-width: 6rem;
+    overflow-x: hidden;
+    line-height: 1rem;
+    font-size: 0.4rem;
+}
+
+.status {
+    float: right;
+    max-width: 2rem;
+    overflow-x: hidden;
+    line-height: 1rem;
+    font-size: 0.4rem;
+}
+
+.time {
+    width: 10rem;
+    height: 0.5rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    font-size: 0.24rem;
+    line-height: 0.5rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+}
+
+.message {
+    width: 10rem;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 0.4rem;
+    text-align: center;
+}

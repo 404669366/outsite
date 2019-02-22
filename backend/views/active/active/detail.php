@@ -11,6 +11,13 @@
             </div>
             <div class="hr-line-dashed"></div>
             <div class="form-group">
+                <label class="col-sm-2 control-label">活动标题</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" placeholder="<?= $model->title ?>" readonly>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
                 <label class="col-sm-2 control-label">开始时间</label>
                 <div class="col-sm-6">
                     <input type="text" class="form-control" placeholder="<?= date('Y-m-d H:i:s', $model->begin_at) ?>"
@@ -36,7 +43,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">活动描述</label>
                 <div class="col-sm-6">
-                    <textarea class="form-control" readonly><?= $model->remark ?></textarea>
+                    <textarea class="form-control" readonly><?= $model->remark ?>//////<?=\vendor\project\database\Active::getJoinUrl($model->no)?></textarea>
                 </div>
             </div>
         </div>

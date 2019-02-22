@@ -6,6 +6,9 @@
                     NO: <input class="searchField" type="text" value="" name="no">
                 </span>
                 <span class="tableSpan">
+                    活动标题: <input class="searchField" type="text" value="" name="title">
+                </span>
+                <span class="tableSpan">
                     <button class="tableSearch">搜索</button>
                     <button class="tableReload">重置</button>
                 </span>
@@ -18,6 +21,7 @@
             <thead>
             <tr role="row">
                 <th>NO</th>
+                <th>活动标题</th>
                 <th>开始时间</th>
                 <th>结束时间</th>
                 <th>人数限制</th>
@@ -34,6 +38,7 @@
         length: 10,
         columns: [
             {"data": "no"},
+            {"data": "title"},
             {
                 "data": "begin_at", "render": function (data, type, row) {
                 return format(data);

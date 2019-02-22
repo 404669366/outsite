@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>登录</title>
+    <title>博瑞恩贝 - 登录</title>
     <script src="/resources/js/common.js" type="text/javascript" charset="utf-8"></script>
     <script src="/resources/js/sms.js" type="text/javascript" charset="utf-8"></script>
     <link href="/resources/css/login.css" rel="stylesheet">

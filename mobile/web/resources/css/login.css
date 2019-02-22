@@ -2,10 +2,6 @@ body {
     width: 10rem;
     height: 16rem;
     background-image: url("../img/login.jpg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
     display: table;
 }
 
@@ -74,7 +70,7 @@ body {
     line-height: 0.8rem;
     font-size: 0.42rem;
     text-align: center;
-    background: #66b961;
+    background: #15c6f8;
     float: right;
     color: #f0f4f7;
 }

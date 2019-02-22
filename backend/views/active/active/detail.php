@@ -43,13 +43,6 @@
         <div class="col-sm-6">
             <div class="hr-line-dashed"></div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">参加链接</label>
-                <div class="col-sm-8">
-                    <a href="<?= \vendor\project\database\Active::getJoinUrl($model->no) ?>"><?= \vendor\project\database\Active::getJoinUrl($model->no) ?></a>
-                </div>
-            </div>
-            <div class="hr-line-dashed"></div>
-            <div class="form-group">
                 <label class="col-sm-2 control-label">二维码</label>
                 <div class="col-sm-6">
                     <div class="qrCode"></div>

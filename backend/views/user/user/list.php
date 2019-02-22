@@ -66,7 +66,7 @@
             {
                 "data": "id", "orderable": false, "render": function (data, type, row) {
                 var str = '<a class="btn btn-sm btn-warning" href="/user/user/modify?id=' + data + '">修改</a>';
-                if (row.status == '在使用') {
+                if (row.status === '已启用') {
                     str += '&emsp;<a class="btn btn-sm btn-danger" href="/user/user/forbidden?st=0&id=' + data + '">禁用</a>';
                 } else {
                     str += '&emsp;<a class="btn btn-sm btn-info" href="/user/user/forbidden?st=1&id=' + data + '">启用</a>';

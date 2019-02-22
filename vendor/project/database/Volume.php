@@ -118,7 +118,7 @@ class Volume extends \yii\db\ActiveRecord
         $result = '';
         foreach ($all as $tel) {
             $i = $num;
-            if ($user = User::findOne(['tel' => $tel])) {
+            if ($user = User::findOne(['tel' => $tel, 'status' => 0])) {
                 while ($i > 0) {
                     $i--;
                     array_push($insert, ['user_id' => $user->id, 'volume_id' => $volume]);
@@ -129,5 +129,29 @@ class Volume extends \yii\db\ActiveRecord
         }
         Yii::$app->db->createCommand()->batchInsert(VRelation::tableName(), ['user_id', 'volume_id'], $insert)->execute();
         return ['insertNum' => count(array_unique($insert, SORT_REGULAR)), 'allNum' => count($all), 'result' => $result];
+    }
+
+    /**
+     * 查询用户票券
+     * @param int $user_id
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function getUserVolume($user_id = 0)
+    {
+        $volume = VRelation::find()->alias('vr')
+            ->leftJoin(Volume::tableName() . ' v', 'vr.volume_id=v.id')
+            ->where(['vr.user_id' => $user_id])
+            ->select(['v.*', 'vr.*'])
+            ->orderBy('v.type asc')
+            ->asArray()->all();
+        foreach ($volume as &$v) {
+            $v['type'] = Constant::volumeType()[$v['type']];
+            if ($v['status'] == 0 && time() > $v['end_at']) {
+                $v['status'] = '已过期';
+            } else {
+                $v['status'] = Constant::volumeStatus()[$v['status']];
+            }
+        }
+        return $volume;
     }
 }

@@ -61,6 +61,7 @@ class VRelation extends \yii\db\ActiveRecord
             ->all();
         foreach ($data as $v) {
             $v->status = 2;
+            $v->updated_at = time();
             $v->save();
         }
     }

@@ -83,3 +83,11 @@ function format(timestamp) {
     return Y + '-' + add(M, 2) + '-' + D + ' ' + add(h, 2) + ':' + add(m, 2) + ':' + add(s, 2);
 }
 
+/**
+ * 跳转
+ * @param e
+ */
+function clickGo(e) {
+    window.location.href = $(e).attr('go');
+}
+

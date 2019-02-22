@@ -1,0 +1,41 @@
+.not_find {
+    width: 100%;
+}
+
+.not_find > .tit {
+    margin-top: 3.4rem;
+    margin-bottom: 0.4rem;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    height: 2rem;
+    font-size: 1.2rem;
+}
+
+.tit > .cont {
+    width: 100%;
+    text-align: center;
+    height: 1rem;
+    font-size: 0.32rem;
+}
+
+.not_find > .notMain {
+    text-align: center;
+    width: 100%;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 0.4rem;
+}
+
+.not_find > .notBtn {
+    text-align: center;
+    width: 100%;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 0.4rem;
+}
+
+.not_find > .notBtn > a {
+    color: #333;
+    text-decoration: none;
+}

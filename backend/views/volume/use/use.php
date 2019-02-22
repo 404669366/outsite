@@ -21,7 +21,7 @@
                     var one = '';
                     $.each(re.data, function (k, v) {
                         one += '<tr>';
-                        one += '<td>' + (v.money ? v.money + '元 ' : ' ' ) + v.type + '</td>';
+                        one += '<td>' + ((v.money !== 0 && v.money !== '' && v.money !== '0') ? v.money + '元' : '' ) + v.type + '</td>';
                         one += '<td>' + format(v.begin_at) + ' - ' + format(v.end_at) + '</td>';
                         one += '<td>' + v.status + '</td>';
                         if (v.status === '未使用' && v.type === '活动优惠券') {
@@ -47,7 +47,7 @@
                 <tbody class="dataBox">
                 <?php foreach ($volume as $v): ?>
                     <tr>
-                        <td><?= $v['money'] ? $v['money'] . '元 ' : ' ' . $v['type'] ?></td>
+                        <td><?= $v['money'] ? $v['money'] . '元' : '' . $v['type'] ?></td>
                         <td><?= date('Y-m-d H:i:s', $v['begin_at']) . ' - ' . date('Y-m-d H:i:s', $v['end_at']) ?></td>
                         <td><?= $v['status'] ?></td>
                         <td class="client-status">

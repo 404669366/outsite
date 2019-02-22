@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : 本地
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : borui
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-02-22 10:39:15
+Date: 2019-02-22 13:38:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,6 +23,7 @@ CREATE TABLE `a_relation` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned DEFAULT '0' COMMENT '家长id',
   `active_id` int(10) unsigned DEFAULT '0' COMMENT '活动id',
+  `created_at` int(11) unsigned DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='家长活动关联表';
 
@@ -42,13 +43,11 @@ CREATE TABLE `active` (
   `end_at` int(11) unsigned DEFAULT '0' COMMENT '活动结束时间',
   `limit` int(5) unsigned DEFAULT '0' COMMENT '人数限制',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='活动表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='活动表';
 
 -- ----------------------------
 -- Records of active
 -- ----------------------------
-INSERT INTO `active` VALUES ('1', 'A2019022011228113', '123123', '1550678400', '1551110400', '123123');
-INSERT INTO `active` VALUES ('2', 'A2019022013154802', '123123', '1550592000', '1551196800', '22');
 
 -- ----------------------------
 -- Table structure for job
@@ -121,6 +120,7 @@ INSERT INTO `power` VALUES ('10', '8', 'jtqdigg5', '1', '扣除票券', '/volume
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `auth` varchar(80) DEFAULT '' COMMENT '用户标识',
   `tel` varchar(11) DEFAULT '' COMMENT '用户电话',
   `wechat` varchar(80) DEFAULT '' COMMENT '微信ID',
   `name` varchar(20) DEFAULT '' COMMENT '家长姓名',

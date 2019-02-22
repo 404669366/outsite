@@ -10,11 +10,20 @@ namespace app\controllers\api;
 
 
 use app\controllers\basis\CommonController;
+use vendor\project\database\Active;
 
 class ActiveController extends CommonController
 {
-    public function actionJoin($no)
+    /**
+     * 加入活动
+     * @param string $no
+     * @return string|\yii\web\Response
+     */
+    public function actionJoin($no = '')
     {
-
+        if (Active::userJoin($no)) {
+            return $this->redirect(['user/active/list']);
+        }
+        return $this->msgBack();
     }
 }

@@ -86,10 +86,12 @@ class BasisController extends Controller
 
     /**
      * 自定义消息提示页并返回上一页
+     * @param string $msg
+     * @param array $params
      * @return string
      */
-    public function actionMsgBack()
+    public function msgBack($msg = '', $params = [])
     {
-        return $this->render('msg');
+        return $this->render('/basis/basis/msg', $params, $msg);
     }
 }

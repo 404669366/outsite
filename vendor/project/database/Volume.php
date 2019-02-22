@@ -140,7 +140,7 @@ class Volume extends \yii\db\ActiveRecord
     {
         $volume = VRelation::find()->alias('vr')
             ->leftJoin(Volume::tableName() . ' v', 'vr.volume_id=v.id')
-            ->where(['vr.user_id' => $user_id])
+            ->where(['vr.user_id' => $user_id ?: Yii::$app->user->id])
             ->select(['v.*', 'vr.*'])
             ->orderBy('v.type asc')
             ->asArray()->all();

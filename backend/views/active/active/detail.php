@@ -45,7 +45,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">参加链接</label>
                 <div class="col-sm-8">
-                    <?=\vendor\project\database\Active::getJoinUrl($model->no)?>
+                    <a href="<?= \vendor\project\database\Active::getJoinUrl($model->no) ?>"><?= \vendor\project\database\Active::getJoinUrl($model->no) ?></a>
                 </div>
             </div>
             <div class="hr-line-dashed"></div>
@@ -69,19 +69,19 @@
                 <label class="col-sm-12 col-xs-12">已参与人数: <?= count($users) ?></label>
                 <div class="col-sm-3 col-xs-3">用户姓名</div>
                 <div class="col-sm-3 col-xs-3">联系电话</div>
-                <div class="col-sm-3 col-xs-3">孩子姓名</div>
-                <div class="col-sm-3 col-xs-3">所在班级</div>
+                <div class="col-sm-3 col-xs-3">孩子姓名 / 所在班级</div>
+                <div class="col-sm-3 col-xs-3">报名时间</div>
                 <?php if ($users): ?>
                     <?php foreach ($users as $v): ?>
                         <div class="col-sm-3 col-xs-3"><?= $v['name'] ?></div>
                         <div class="col-sm-3 col-xs-3"><?= $v['tel'] ?></div>
-                        <div class="col-sm-3 col-xs-3"><?= $v['child_name'] ?></div>
-                        <div class="col-sm-3 col-xs-3"><?= $v['class'] ?></div>
+                        <div class="col-sm-3 col-xs-3"><?= $v['child_name'] ?> / <?= $v['class'] ?></div>
+                        <div class="col-sm-3 col-xs-3"><?= date('Y-m-d H:i:s', $v['created_at']) ?></div>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <div class="col-sm-3 col-xs-3">----</div>
                     <div class="col-sm-3 col-xs-3">----</div>
-                    <div class="col-sm-3 col-xs-3">----</div>
+                    <div class="col-sm-3 col-xs-3">---- / ----</div>
                     <div class="col-sm-3 col-xs-3">----</div>
                 <?php endif; ?>
 

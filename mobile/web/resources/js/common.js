@@ -62,3 +62,24 @@ function postCall(url, params, target) {
     document.body.removeChild(tempform);
 }
 
+/**
+ * 时间戳转换日期时间(11位)
+ * @param timestamp
+ * @returns {string}
+ */
+function format(timestamp) {
+    var date = new Date(timestamp * 1000);
+    var Y = date.getFullYear();
+    var M = date.getMonth() + 1;
+    var D = date.getDate();
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+
+    function add(num, length) {
+        return (Array(length).join(0) + num).slice(-length);
+    }
+
+    return Y + '-' + add(M, 2) + '-' + D + ' ' + add(h, 2) + ':' + add(m, 2) + ':' + add(s, 2);
+}
+

@@ -2,6 +2,7 @@
 
 namespace vendor\project\database;
 
+use vendor\project\helpers\Msg;
 use Yii;
 
 /**
@@ -104,7 +105,83 @@ class Active extends \yii\db\ActiveRecord
     {
         return ARelation::find()->alias('ar')
             ->leftJoin(User::tableName() . ' u', 'ar.user_id=u.id')
+            ->select(['ar.*', 'u.*'])
             ->where(['ar.active_id' => $id])
+            ->orderBy('ar.created_at asc')
             ->asArray()->all();
+    }
+
+    /**
+     * 用户报名活动
+     * @param string $no
+     * @return bool
+     */
+    public static function userJoin($no = '')
+    {
+        Msg::set('活动报名已结束');
+        if ($cardInfo = self::isNotFull($no)) {
+            Msg::set('您已参与该活动');
+            if (!self::isJoin($no)) {
+                Msg::set('您没有该活动票券');
+                if ($card = self::getUserCardOne()) {
+                    $model = new ARelation();
+                    $model->user_id = Yii::$app->user->id;
+                    $model->active_id = $cardInfo->id;
+                    $model->created_at = time();
+                    $card->updated_at = time();
+                    $card->status = 1;
+                    Msg::set('系统错误');
+                    if ($model->save() && $card->save()) {
+                        Msg::set('报名成功');
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 活动是否满员
+     * @param string $no
+     * @return bool|null|static
+     */
+    public static function isNotFull($no = '')
+    {
+        if ($model = self::findOne(['no' => $no])) {
+            $count = ARelation::find()->where(['active_id' => $model->id])->count();
+            if ($count < $model->limit) {
+                return $model;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 验证用户是否加入活动
+     * @param string $no
+     * @return array|null|\yii\db\ActiveRecord
+     */
+    public static function isJoin($no = '')
+    {
+        return ARelation::find()->alias('ar')
+            ->leftJoin(Active::tableName() . ' a', 'ar.active_id=a.id')
+            ->where(['a.no' => $no, 'ar.user_id' => Yii::$app->user->id])
+            ->one();
+    }
+
+    /**
+     * 获取一张合法的用户活动票券
+     * @param int $user_id
+     * @return array|null|\yii\db\ActiveRecord
+     */
+    public static function getUserCardOne($user_id = 0)
+    {
+        return VRelation::find()->alias('vr')
+            ->leftJoin(Volume::tableName() . ' v', 'vr.volume_id=v.id')
+            ->where(['vr.user_id' => $user_id ?: Yii::$app->user->id, 'v.type' => 0, 'vr.status' => 0])
+            ->andWhere(['<=', 'v.begin_at', time()])
+            ->andWhere(['>=', 'v.end_at', time()])
+            ->one();
     }
 }

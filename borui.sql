@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地
+Source Server         : localhost_3306
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : borui
@@ -10,8 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-02-22 10:35:49
-=======
+Date: 2019-02-22 10:39:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -122,7 +121,6 @@ INSERT INTO `power` VALUES ('10', '8', 'jtqdigg5', '1', '扣除票券', '/volume
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `auth` varchar(80) DEFAULT '' COMMENT '用户标识',
   `tel` varchar(11) DEFAULT '' COMMENT '用户电话',
   `wechat` varchar(80) DEFAULT '' COMMENT '微信ID',
   `name` varchar(20) DEFAULT '' COMMENT '家长姓名',

@@ -10,18 +10,22 @@ namespace app\controllers\sms;
 
 
 use app\controllers\basis\BasisController;
+use vendor\project\database\User;
 use vendor\project\helpers\Sms;
 
 class SmsController extends BasisController
 {
     /**
      * 发送验证码
+     * @param $tel
      * @return string
      */
-    public function actionSend()
+    public function actionSend($tel)
     {
-        $get = \Yii::$app->request->get();
-        Sms::sendCode($get['tel']);
-        return $this->rJson();
+        if (User::findOne(['tel' => $tel])) {
+            Sms::sendCode($tel);
+            return $this->rJson();
+        }
+        return $this->rJson([], false, '账号不存在');
     }
 }

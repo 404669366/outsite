@@ -94,4 +94,14 @@ class BasisController extends Controller
     {
         return $this->render('/basis/basis/msg', $params, $msg);
     }
+
+    /**
+     * 微信过token
+     * @param $echostr
+     */
+    public function actionReturn($echostr)
+    {
+        echo $echostr;
+        exit();
+    }
 }

@@ -46,6 +46,7 @@ class LoginController extends BasisController
      */
     public function actionLoginW($code = '')
     {
+        echo \Yii::$app->request->get('echostr');exit();
         if ($code) {
             if ($info = Wechat::getUserAuthorizeAccessToken($code)) {
                 if ($model = User::findOne(['wechat' => $info['openid']])) {

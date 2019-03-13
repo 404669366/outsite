@@ -3,6 +3,7 @@
 namespace vendor\project\database;
 
 use vendor\project\helpers\Constant;
+use vendor\project\helpers\Helper;
 use yii\web\IdentityInterface;
 
 /**
@@ -92,29 +93,89 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return $data;
     }
 
+    /**
+     * 批量导入
+     * @param string $dataJson
+     * @return bool
+     */
+    public static function import($dataJson = '')
+    {
+        if ($dataJson) {
+            $data = json_decode($dataJson, true);
+            \Yii::$app->db->createCommand()->batchInsert(
+                self::tableName(),
+                ['tel', 'name', 'child_name', 'child_sex', 'child_age', 'class', 'auth', 'created'],
+                $data
+            )->execute();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 解析excel
+     * @param string $path
+     * @return array|bool
+     */
+    public static function resolve($path = '')
+    {
+        try {
+            $inputFileType = \PHPExcel_IOFactory::identify($path);
+            $objReader = \PHPExcel_IOFactory::createReader($inputFileType);
+            $objReader->setReadDataOnly(true);
+            $objPHPExcel = $objReader->load($path);
+            $data = $objPHPExcel->getSheet(0)->toArray();
+            if ($data[0] == ['家长电话', '家长姓名', '学生姓名', '学生性别', '学生年龄', '班级']) {
+                $sex = [
+                    '男' => 0,
+                    '女' => 1
+                ];
+                $relData = [];
+                unset($data[0]);
+                foreach ($data as $v) {
+                    if (!self::findOne(['tel' => $v[0]])) {
+                        $v[3] = $sex[$v[3]];
+                        $v[6] = \Yii::$app->security->generatePasswordHash($v[0]);
+                        $v[7] = time();
+                        array_push($relData, $v);
+                    }
+                }
+                return Helper::assocUnique($relData, 0);
+            }
+            return false;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
     //todo**********************  登录接口实现  ***************************
 
-    public static function findIdentity($id)
+    public
+    static function findIdentity($id)
     {
         return self::findOne($id);
     }
 
-    public static function findIdentityByAccessToken($token, $type = null)
+    public
+    static function findIdentityByAccessToken($token, $type = null)
     {
         return self::findOne(['auth' => $token]);
     }
 
-    public function getId()
+    public
+    function getId()
     {
         return $this->id;
     }
 
-    public function getAuthKey()
+    public
+    function getAuthKey()
     {
         return $this->auth;
     }
 
-    public function validateAuthKey($authKey)
+    public
+    function validateAuthKey($authKey)
     {
         return $this->auth === $authKey;
     }

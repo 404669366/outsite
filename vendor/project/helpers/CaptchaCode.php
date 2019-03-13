@@ -135,6 +135,7 @@ class CaptchaCode
     public static function validate($code = '', $model = '')
     {
         if ($code && $model) {
+            @session_start();
             $old = \Yii::$app->session->get($model);
             if ($old == strtolower($code)) {
                 return true;

@@ -136,7 +136,6 @@ class CaptchaCode
     {
         if ($code && $model) {
             $old = \Yii::$app->session->get($model);
-            var_dump($old);exit;
             if ($old == strtolower($code)) {
                 return true;
             }

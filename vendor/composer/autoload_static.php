@@ -31,6 +31,10 @@ class ComposerStaticInit57f21fa3b79eb91fb3379aecb1f74795
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'm' => 
+        array (
+            'moonland\\phpexcel\\' => 18,
+        ),
         'c' => 
         array (
             'cebe\\markdown\\' => 14,
@@ -116,6 +120,10 @@ class ComposerStaticInit57f21fa3b79eb91fb3379aecb1f74795
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'moonland\\phpexcel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/moonlandsoft/yii2-phpexcel',
         ),
         'cebe\\markdown\\' => 
         array (
@@ -214,6 +222,10 @@ class ComposerStaticInit57f21fa3b79eb91fb3379aecb1f74795
             'Prophecy\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
+            ),
+            'PHPExcel' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
             ),
         ),
         'H' => 

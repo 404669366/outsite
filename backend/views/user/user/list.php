@@ -32,6 +32,7 @@
             </div>
             <div class="col-sm-1">
                 <a class="btn btn-sm btn-info" href="/user/user/add">添加</a>
+                <a class="btn btn-sm btn-info" href="/user/user/import">导入</a>
             </div>
         </div>
         <table class="table table-striped table-bordered table-hover dataTable" id="table">

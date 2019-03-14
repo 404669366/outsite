@@ -543,4 +543,23 @@ class Helper
         return $save_dir . $filename;
     }
 
+    /**
+     * 二维数组去重
+     * @param $arr
+     * @param $key
+     * @return mixed
+     */
+    public static function assocUnique($arr, $key)
+    {
+        $tmp_arr = [];
+        foreach ($arr as $k => $v) {
+            if (in_array($v[$key], $tmp_arr)) {
+                unset($arr[$k]);
+            } else {
+                $tmp_arr[] = $v[$key];
+            }
+        }
+        return $arr;
+    }
+
 }

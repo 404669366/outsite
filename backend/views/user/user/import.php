@@ -12,7 +12,7 @@
         <div class="hr-line-dashed"></div>
         <div class="form-group">
             <div class="col-sm-4 col-sm-offset-2">
-                <button class="btn btn-primary" type="submit">开始导入</button>
+                <button class="btn btn-primary importButton" type="submit" style="display: none">开始导入</button>
                 <button class="btn btn-white back">返回</button>
             </div>
         </div>
@@ -20,6 +20,7 @@
 </div>
 <script>
     $('.uploadExcel').change(function () {
+        $('.importButton').hide();
         if (checkData()) {
             var formData = new FormData();
             formData.append('file', $(this)[0].files[0]);
@@ -35,6 +36,7 @@
                     if (res.type) {
                         $('[name="dataJson"]').val(JSON.stringify(res.data));
                         layer.msg('数据解析成功!');
+                        $('.importButton').show();
                     } else {
                         layer.msg(res.msg);
                     }

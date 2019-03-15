@@ -145,6 +145,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             }
             return false;
         } catch (\Exception $e) {
+            var_dump($e->getMessage());exit();
             return false;
         }
     }

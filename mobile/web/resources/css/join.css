@@ -1,0 +1,50 @@
+body {
+    height: 100%;
+    position: fixed;
+    display: table;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+body > .center {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+body > .center > .box {
+    background: white;
+    width: 6rem;
+    height: 5rem;
+    margin: 0 auto;
+    padding: 0.4rem;
+    border-radius: 0.1rem;
+    box-sizing: border-box;
+    font-size: 0.52rem;
+    text-align: center;
+}
+
+body > .center > .box > .title {
+    padding-top: 0.4rem;
+    box-sizing: border-box;
+    width: 100%;
+    height: 3rem;
+}
+
+body > .center > .box > .btns {
+    width: 100%;
+    height: 1.2rem;
+}
+
+body > .center > .box > .btns > .btn {
+    display: inline-block;
+    width: 2rem;
+    height: 0.9rem;
+    line-height: 0.9rem;
+    font-size: 0.42rem;
+    background: #3072F3;
+    border-radius: 0.1rem;
+    color: whitesmoke;
+}
+
+body > .center > .box > .btns > .no {
+    background: darkorange;
+}

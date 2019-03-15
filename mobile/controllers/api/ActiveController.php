@@ -17,11 +17,15 @@ class ActiveController extends CommonController
     /**
      * 加入活动
      * @param string $no
-     * @return \yii\web\Response
+     * @param int $sure
+     * @return string|\yii\web\Response
      */
-    public function actionJoin($no = '')
+    public function actionJoin($no = '', $sure = 0)
     {
-        if (Active::userJoin($no)) {
+        if (!$sure) {
+            return $this->render('join', ['no' => $no]);
+        }
+        if ($sure == 1 && Active::userJoin($no)) {
             return $this->redirect(['user/active/list']);
         }
         return $this->redirect(['user/user/center']);

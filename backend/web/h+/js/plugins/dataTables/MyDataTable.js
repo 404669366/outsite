@@ -17,6 +17,7 @@ myTable.search = function () {
         $('.tableSearchBox').find('.searchField').each(function (k, v) {
             data[$(v).attr('name')] = $(v).val();
         });
+        console.log(data);
         myTable.params = data;
         myTable.model.ajax.reload();
     });

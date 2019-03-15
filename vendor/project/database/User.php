@@ -133,6 +133,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
                 ];
                 unset($data[0]);
                 $relData = [];
+                var_dump($data);
                 foreach ($data as $v) {
                     if ($v[0] && !self::findOne(['tel' => $v[0]])) {
                         $v[3] = $sex[$v[3]];

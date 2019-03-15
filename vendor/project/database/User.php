@@ -126,9 +126,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             $objPHPExcel = $objReader->load($path);
             $data = $objPHPExcel->getSheet(0)->toArray();
             $data = Helper::assocUnique($data, 0);
-            $keys = ['家长电话', '家长姓名', '学生姓名', '学生性别', '学生年龄', '班级'];
-            var_dump(array_diff($data[0], $keys));
-            if (!array_diff($data[0], $keys)) {
+            if (!array_diff($data[0], ['家长电话', '家长姓名', '学生姓名', '学生性别', '学生年龄', '班级'])) {
                 $sex = [
                     '男' => 0,
                     '女' => 1
@@ -143,6 +141,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
                         array_push($relData, $v);
                     }
                 }
+                var_dump($relData);
                 return $relData;
             }
             return false;

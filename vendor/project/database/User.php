@@ -132,15 +132,16 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
                 ];
                 $relData = [];
                 unset($data[0]);
+                $data = Helper::assocUnique($data, 0);
                 foreach ($data as $v) {
-                    if (!self::findOne(['tel' => $v[0]])) {
+                    if ($v[0] && !self::findOne(['tel' => $v[0]])) {
                         $v[3] = $sex[$v[3]];
                         $v[6] = \Yii::$app->security->generatePasswordHash($v[0]);
                         $v[7] = time();
                         array_push($relData, $v);
                     }
                 }
-                return Helper::assocUnique($relData, 0);
+                return $relData;
             }
             return false;
         } catch (\Exception $e) {

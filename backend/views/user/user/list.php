@@ -57,12 +57,36 @@
         url: '/user/user/data',
         length: 10,
         columns: [
-            {"data": "class"},
-            {"data": "name"},
-            {"data": "tel"},
-            {"data": "child_name"},
-            {"data": "child_sex"},
-            {"data": "child_age"},
+            {
+                "data": "class", "render": function (data, type, row) {
+                return data || '----';
+            }
+            },
+            {
+                "data": "name", "render": function (data, type, row) {
+                return data || '----';
+            }
+            },
+            {
+                "data": "tel", "render": function (data, type, row) {
+                return data || '----';
+            }
+            },
+            {
+                "data": "child_name", "render": function (data, type, row) {
+                return data || '----';
+            }
+            },
+            {
+                "data": "child_sex", "render": function (data, type, row) {
+                return data || '----';
+            }
+            },
+            {
+                "data": "child_age", "render": function (data, type, row) {
+                return data || '----';
+            }
+            },
             {"data": "status"},
             {
                 "data": "id", "orderable": false, "render": function (data, type, row) {

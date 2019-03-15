@@ -21,6 +21,7 @@
 <script>
     $('.uploadExcel').change(function () {
         $('.importButton').hide();
+        $('[name="dataJson"]').val('');
         if (checkData()) {
             var formData = new FormData();
             formData.append('file', $(this)[0].files[0]);

@@ -13,6 +13,7 @@ use app\controllers\basis\CommonController;
 use vendor\project\database\User;
 use vendor\project\database\VRelation;
 use vendor\project\helpers\Constant;
+use vendor\project\helpers\Helper;
 use vendor\project\helpers\Msg;
 
 class UserController extends CommonController

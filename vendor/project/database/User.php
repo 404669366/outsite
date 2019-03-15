@@ -127,8 +127,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             $data = $objPHPExcel->getSheet(0)->toArray();
             $data = Helper::assocUnique($data, 0);
             $keys = ['家长电话', '家长姓名', '学生姓名', '学生性别', '学生年龄', '班级'];
-            var_dump(array_intersect($data[0], $keys));
-            if (array_intersect($data[0], $keys) == $keys) {
+            var_dump(array_diff($data[0], $keys));
+            if (!array_diff($data[0], $keys)) {
                 $sex = [
                     '男' => 0,
                     '女' => 1

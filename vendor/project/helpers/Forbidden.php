@@ -19,7 +19,7 @@ class Forbidden
      */
     public static function isForbidden()
     {
-        if (redis::app()->get('AppForbidden') === 'stop') {
+        if (redis::app()->get('AppForbidden') === '禁用') {
             if (\Yii::$app->params['entryName'] === 'BoRuiAdmin' && \Yii::$app->user->id) {
                 if (Member::isRoot(\Yii::$app->user->id)) {
                     return false;
@@ -28,7 +28,7 @@ class Forbidden
             echo '<div style="position: fixed;display: table;left: 0;top: 0;width: 100%;height: 100%"><span style="display:table-cell;vertical-align: middle;text-align: center;font-size: 20px">The server is forbidden</span></div>';
             return true;
         }
-        redis::app()->set('AppForbidden', 'start');
+        redis::app()->set('AppForbidden', '启用');
         return false;
     }
 }

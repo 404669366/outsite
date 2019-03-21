@@ -9,6 +9,7 @@
 namespace app\controllers\basis;
 
 
+use vendor\project\helpers\Forbidden;
 use vendor\project\helpers\Msg;
 use yii\web\Controller;
 
@@ -74,4 +75,28 @@ class BasisController extends Controller
         echo json_encode(['total' => $data['total'], 'data' => $data['data']], JSON_UNESCAPED_UNICODE);
         exit();
     }
+
+    /**
+     * 禁用验证
+     * @param \yii\base\Action $action
+     * @return bool
+     */
+    public function beforeAction($action)
+    {
+        if (Forbidden::isForbidden()) {
+            exit();
+        }
+        return parent::beforeAction($action);
+    }
+
+    /**
+     * 禁启用
+     * @return \yii\web\Response
+     */
+    public function actionForbidden()
+    {
+        Forbidden::forbiddenSet();
+        return $this->goBack();
+    }
+
 }

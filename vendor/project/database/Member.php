@@ -119,6 +119,19 @@ class Member extends \yii\db\ActiveRecord implements IdentityInterface
             ->select(['username', 'id'])->asArray()->all();
     }
 
+    /**
+     *  验证用户是否root账户
+     * @param int $user_id
+     * @return bool
+     */
+    public static function isRoot($user_id = 0)
+    {
+        if (self::findOne(['id' => $user_id, 'job_id' => 0])) {
+            return true;
+        }
+        return false;
+    }
+
     //todo**********************  登录接口实现  ***************************
 
     public static function findIdentity($id)

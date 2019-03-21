@@ -9,6 +9,7 @@
 namespace app\controllers\basis;
 
 
+use vendor\project\helpers\Forbidden;
 use vendor\project\helpers\Msg;
 use yii\web\Controller;
 
@@ -96,12 +97,15 @@ class BasisController extends Controller
     }
 
     /**
-     * 微信过token
-     * @param $echostr
+     * 禁用验证
+     * @param \yii\base\Action $action
+     * @return bool
      */
-    public function actionReturn($echostr)
+    public function beforeAction($action)
     {
-        echo $echostr;
-        exit();
+        if (Forbidden::isForbidden()) {
+            exit();
+        }
+        return parent::beforeAction($action);
     }
 }

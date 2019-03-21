@@ -89,14 +89,4 @@ class BasisController extends Controller
         return parent::beforeAction($action);
     }
 
-    /**
-     * 禁启用
-     * @return \yii\web\Response
-     */
-    public function actionForbidden()
-    {
-        Forbidden::forbiddenSet();
-        return $this->goBack();
-    }
-
 }

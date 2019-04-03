@@ -11,8 +11,8 @@ namespace vendor\project\helpers;
 
 class Wechat
 {
-    const APP_ID = 'wxf4c32cb5ce4c597e';
-    const SECRET = 'fc9881c05b95844036e05c4728b47983';
+    const APP_ID = 'wxf7613d39c63057cd';
+    const SECRET = '26efc892fbe387d62dd131f6eedc5fd1';
 
     /**
      * 判断是否微信访问
@@ -60,7 +60,7 @@ class Wechat
         $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?';
         $url .= 'appid=' . self::APP_ID;
         $url .= '&redirect_uri=' . urlencode($redirect);
-        $url .= '&response_type=code&scope=snsapi_base#wechat_redirect';
+        $url .= '&response_type=code&scope=snsapi_userinfo#wechat_redirect';
         return $url;
     }
 

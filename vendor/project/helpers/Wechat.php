@@ -60,7 +60,7 @@ class Wechat
         $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?';
         $url .= 'appid=' . self::APP_ID;
         $url .= '&redirect_uri=' . urlencode($redirect);
-        $url .= '&response_type=code&scope=snsapi_userinfo#wechat_redirect';
+        $url .= '&response_type=code&scope=snsapi_base#wechat_redirect';
         return $url;
     }
 

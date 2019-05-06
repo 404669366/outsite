@@ -65,6 +65,6 @@ class UseController extends CommonController
                 }
             }
         }
-        return $this->redirect(['use?id=' . $model->user_id]);
+        return $this->goBack();
     }
 }

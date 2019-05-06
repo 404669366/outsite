@@ -98,10 +98,12 @@ class Volume extends \yii\db\ActiveRecord
      */
     public static function timeout($id)
     {
-        if (time() > Volume::findOne($id)->end_at) {
-            return false;
+        if ($model = Volume::findOne($id)) {
+            if (time() < $model->end_at) {
+                return true;
+            }
         }
-        return true;
+        return false;
     }
 
     /**

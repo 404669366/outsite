@@ -15,7 +15,8 @@
                 url: "/volume/use/get-users",
                 showBtn: false,
                 idField: "id",
-                keyField: "tel"
+                keyField: "tel",
+                effectiveFields: []
             }).on("onSetSelectValue", function (e, keyword) {
                 $.getJSON('/volume/use/get-user-volume', {id: keyword.id}, function (re) {
                     var one = '';

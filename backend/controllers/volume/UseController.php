@@ -58,7 +58,7 @@ class UseController extends CommonController
         Msg::set('优惠券已过期');
         if (Volume::timeout($vid)) {
             Msg::set('非法操作');
-            if ($model = VRelation::findOne(['id' => $vr_id, 'status' => 0, 'type' => 1])) {
+            if ($model = VRelation::findOne(['id' => $vr_id, 'status' => 0])) {
                 $model->status = 1;
                 $model->updated_at = time();
                 if ($model->save()) {

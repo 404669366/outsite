@@ -32,7 +32,6 @@ class UseController extends CommonController
     {
         $user = User::find()
             ->select(['id', 'tel', 'name'])
-            ->orderBy('id asc')
             ->asArray()->all();
         echo json_encode(['message' => '', 'value' => $user], JSON_UNESCAPED_UNICODE);
         exit();

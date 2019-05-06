@@ -4,6 +4,9 @@
     <p>通过手机号查询用户管理票券</p>
     <div class="input-group">
         <input type="text" class="form-control" id="testNoBtn" value="<?= $tel ?>">
+        <div class="input-group-btn">
+            <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+        </div>
         <script>
             $("#testNoBtn").bsSuggest({
                 url: "/volume/use/get-users",

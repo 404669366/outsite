@@ -21,6 +21,12 @@
                         one += '<td>' + ((v.money !== 0 && v.money !== '' && v.money !== '0') ? v.money + '元' : '' ) + v.type + '</td>';
                         one += '<td>' + format(v.begin_at) + ' - ' + format(v.end_at) + '</td>';
                         one += '<td>' + v.status + '</td>';
+                        if (v.status === '已使用' && v.type === '活动优惠券') {
+                            one += '<td>' + format(v.updated_at) + '</td>';
+                        }
+                        else {
+                            one += '<td class="client-status">----</td>';
+                        }
                         if (v.status === '未使用' && v.type === '活动优惠券') {
                             one += '<td class="client-status"><a class="label label-primary" href="/volume/use/del?vid=' + v.vid + '&vr_id=' + v.vr_id + '">扣除</a></td>';
                         } else {
@@ -47,6 +53,11 @@
                         <td><?= ($v['money'] ? $v['money'] . '元' : '') . $v['type'] ?></td>
                         <td><?= date('Y-m-d H:i:s', $v['begin_at']) . ' - ' . date('Y-m-d H:i:s', $v['end_at']) ?></td>
                         <td><?= $v['status'] ?></td>
+                        <?php if ($v['status'] == '已使用' && $v['type'] == '活动优惠券'): ?>
+                            <td><?= date('Y-m-d H:i:s', $v['updated_at']) ?></td>
+                        <?php else: ?>
+                            ----
+                        <?php endif; ?>
                         <td class="client-status">
                             <?php if ($v['status'] == '未使用' && $v['type'] == '活动优惠券'): ?>
                                 <a class="label label-primary"

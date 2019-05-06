@@ -31,7 +31,7 @@ class UseController extends CommonController
     public function actionGetUsers()
     {
         $user = User::find()
-            ->select([ 'id','tel'])
+            ->select(['tel'])
             ->asArray()->all();
         echo json_encode(['message' => '', 'value' => $user], JSON_UNESCAPED_UNICODE);
         exit();
@@ -39,12 +39,12 @@ class UseController extends CommonController
 
     /**
      * 查询用户票券信息
-     * @param $id
+     * @param $tel
      * @return string
      */
-    public function actionGetUserVolume($id)
+    public function actionGetUserVolume($tel)
     {
-        return $this->rJson(Volume::getUserVolume($id));
+        return $this->rJson(Volume::getUserVolumes($tel));
     }
 
     /**

@@ -154,4 +154,29 @@ class Volume extends \yii\db\ActiveRecord
         }
         return $volume;
     }
+
+    /**
+     * 电话号码查票券
+     * @param string $tel
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function getUserVolumes($tel = '')
+    {
+        $volume = VRelation::find()->alias('vr')
+            ->leftJoin(Volume::tableName() . ' v', 'vr.volume_id=v.id')
+            ->leftJoin(User::tableName() . ' u', 'u.id=vr.user_id')
+            ->where(['u.tel' => $tel])
+            ->select(['v.*', 'vr.*'])
+            ->orderBy('v.type asc')
+            ->asArray()->all();
+        foreach ($volume as &$v) {
+            $v['type'] = Constant::volumeType()[$v['type']];
+            if ($v['status'] == 0 && time() > $v['end_at']) {
+                $v['status'] = '已过期';
+            } else {
+                $v['status'] = Constant::volumeStatus()[$v['status']];
+            }
+        }
+        return $volume;
+    }
 }

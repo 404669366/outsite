@@ -168,7 +168,7 @@ class Volume extends \yii\db\ActiveRecord
             ->leftJoin(Volume::tableName() . ' v', 'vr.volume_id=v.id')
             ->leftJoin(User::tableName() . ' u', 'u.id=vr.user_id')
             ->where(['u.tel' => $tel])
-            ->select(['v.id as vid','v.type','v.begin_at','v.end_at','v.money', 'vr.id as vr_id'])
+            ->select(['v.id as vid','v.type','v.begin_at','v.end_at','v.money', 'vr.id as vr_id','vr.status'])
             ->orderBy('v.type asc')
             ->asArray()->all();
         foreach ($volume as &$v) {

@@ -49,15 +49,16 @@ class UseController extends CommonController
 
     /**
      * 扣除票券
-     * @param $id
+     * @param $vid
+     * @param $vr_id
      * @return \yii\web\Response
      */
-    public function actionDel($id)
+    public function actionDel($vid,$vr_id)
     {
         Msg::set('优惠券已过期');
-        if (Volume::timeout($id)) {
+        if (Volume::timeout($vid)) {
             Msg::set('非法操作');
-            if ($model = VRelation::findOne(['id' => $id, 'status' => 0, 'type' => 1])) {
+            if ($model = VRelation::findOne(['id' => $vr_id, 'status' => 0, 'type' => 1])) {
                 $model->status = 1;
                 $model->updated_at = time();
                 if ($model->save()) {

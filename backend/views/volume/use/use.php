@@ -52,7 +52,7 @@
                         <td><?= $v['status'] ?></td>
                         <td class="client-status">
                             <?php if ($v['status'] == '未使用' && $v['type'] == '活动优惠券'): ?>
-                                <a class="label label-primary" href="/volume/use/del?id=<?= $v['id'] ?>">扣除</a>
+                                <a class="label label-primary" href="/volume/use/del?vid=<?= $v['vid'] ?>&vr_id=<?= $v['vr_id'] ?>">扣除</a>
                             <?php else: ?>
                                 ----
                             <?php endif; ?>

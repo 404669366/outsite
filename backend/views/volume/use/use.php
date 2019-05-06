@@ -16,10 +16,8 @@
                 showBtn: false,
                 idField: "tel",
                 keyField: "tel",
-                twoWayMatch: true,
-                effectiveFields: "tel"
-            }).on("onSetSelectValue", function (e) {
-                $.getJSON('/volume/use/get-user-volume', function (re) {
+            }).on("onSetSelectValue", function (e, keyword) {
+                $.getJSON('/volume/use/get-user-volume', {id: keyword.id}, function (re) {
                     var one = '';
                     $.each(re.data, function (k, v) {
                         one += '<tr>';

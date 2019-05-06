@@ -31,7 +31,7 @@ class UseController extends CommonController
     public function actionGetUsers()
     {
         $user = User::find()
-            ->select(['id', 'tel', 'name'])
+            ->select([ 'tel'])
             ->asArray()->all();
         echo json_encode(['message' => '', 'value' => $user], JSON_UNESCAPED_UNICODE);
         exit();

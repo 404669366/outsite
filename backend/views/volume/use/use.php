@@ -14,7 +14,7 @@
             $("#testNoBtn").bsSuggest({
                 url: "/volume/use/get-users",
                 showBtn: false,
-                idField: "id",
+                idField: "tel",
                 keyField: "tel",
                 effectiveFields:"tel",
             }).on("onSetSelectValue", function (e, keyword) {

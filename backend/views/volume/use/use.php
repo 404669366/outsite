@@ -17,8 +17,7 @@
                 idField: "tel",
                 keyField: "tel",
             }).on("onSetSelectValue", function (e, keyword) {
-                console.log(keyword);
-                $.getJSON('/volume/use/get-user-volume', {tel: keyword.tel}, function (re) {
+                $.getJSON('/volume/use/get-user-volume', {tel: keyword.id}, function (re) {
                     var one = '';
                     $.each(re.data, function (k, v) {
                         one += '<tr>';

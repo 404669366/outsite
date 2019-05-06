@@ -14,8 +14,9 @@
             $("#testNoBtn").bsSuggest({
                 url: "/volume/use/get-users",
                 showBtn: false,
-                idField: "tel",
+                idField: "id",
                 keyField: "tel",
+                effectiveFields:"tel",
             }).on("onSetSelectValue", function (e, keyword) {
                 $.getJSON('/volume/use/get-user-volume', {id: keyword.id}, function (re) {
                     var one = '';

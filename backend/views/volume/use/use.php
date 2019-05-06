@@ -4,7 +4,7 @@
     <p>通过手机号查询用户管理票券</p>
     <div class="input-group">
         <input type="text" class="form-control" id="testNoBtn" value="<?= $tel ?>">
-        <div class="input-group-btn">
+        <div class="input-group-btn" style="width: 0;">
             <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
         </div>
         <script>

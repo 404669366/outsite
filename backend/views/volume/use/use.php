@@ -25,7 +25,7 @@
                         one += '<td>' + format(v.begin_at) + ' - ' + format(v.end_at) + '</td>';
                         one += '<td>' + v.status + '</td>';
                         if (v.status === '未使用' && v.type === '活动优惠券') {
-                            one += '<td class="client-status"><a class="label label-primary" href="/volume/use/del?id=' + v.id + '">扣除</a></td>';
+                            one += '<td class="client-status"><a class="label label-primary" href="/volume/use/del?vid=' + v.vid + '&vr_id=' + v.vr_id + '">扣除</a></td>';
                         } else {
                             one += '<td class="client-status">----</td>';
                         }
@@ -52,7 +52,8 @@
                         <td><?= $v['status'] ?></td>
                         <td class="client-status">
                             <?php if ($v['status'] == '未使用' && $v['type'] == '活动优惠券'): ?>
-                                <a class="label label-primary" href="/volume/use/del?vid=<?= $v['vid'] ?>&vr_id=<?= $v['vr_id'] ?>">扣除</a>
+                                <a class="label label-primary"
+                                   href="/volume/use/del?vid=<?= $v['vid'] ?>&vr_id=<?= $v['vr_id'] ?>">扣除</a>
                             <?php else: ?>
                                 ----
                             <?php endif; ?>
